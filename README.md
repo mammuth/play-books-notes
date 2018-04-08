@@ -14,9 +14,9 @@ Could be used for:
 
 <img width="1680" alt="screen shot 2018-04-08 at 22 11 52" src="https://user-images.githubusercontent.com/3121306/38472156-d7cda50a-3b7b-11e8-9ca0-541296755118.png">
 
-### Usage
+### How to self host this:
 - Install dependencies (`pipenv install`)
 - Create Google API Project
-- Setup OAuth
+- Setup OAuth (callback URL: /oauth2callback)
 - Download `client_id.json` and `client_secret.json` from the API Console
 - Run the flask app
