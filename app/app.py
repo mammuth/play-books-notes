@@ -23,8 +23,7 @@ CLIENT_SECRETS_FILE = f"{ROOT_PATH}client_secret.json"  # Download that file fro
 OAUTH_SCOPES = [
     'https://www.googleapis.com/auth/drive.readonly',
 ]
-API_SERVICE_NAME = 'drive'
-API_VERSION = 'v3'
+
 
 
 @app.route('/')
@@ -145,4 +144,4 @@ if __name__ == '__main__':
 
     # Specify a hostname and port that are set as a valid redirect URI
     # for your API project in the Google API Console.
-    app.run('127.0.0.1', 8080, debug=True)
+    app.run('0.0.0.0', 8080, debug=True)
