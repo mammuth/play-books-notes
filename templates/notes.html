@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="section has-text-centered">
+        <h1 class="title has-text-white is-size-1">Your Favorite Quotes</h1>
+        <div class="notes-slider js-notes-slider">
+            {% for book in notes.values() %}
+                {% for note in book['notes'] %}
+                    {% include 'note.html' %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function () {
+            {# Dom randomize function #}
+            $.fn.randomize = function (selector) {
+                var $elems = selector ? $(this).find(selector) : $(this).children(),
+                    $parents = $elems.parent();
+
+                $parents.each(function () {
+                    $(this).children(selector).sort(function () {
+                        return Math.round(Math.random()) - 0.5;
+                    }).detach().appendTo(this);
+                });
+
+                return this;
+            };
+
+            $('.js-notes-slider')
+                .randomize('div')
+                .slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 15000,
+                    arrows: false,
+                    dots: false,
+                    fade: true,
+                    infinite: true,
+                });
+        });
+    </script>
+{% endblock %}

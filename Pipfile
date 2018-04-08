@@ -1,0 +1,20 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+google-api-python-client = "*"
+flask = "*"
+flask-dance = "*"
+google-auth = "*"
+google-auth-oauthlib = "*"
+"google-auth-httplib2" = "*"
+"beautifulsoup4" = "*"
+
+
+[dev-packages]
+
