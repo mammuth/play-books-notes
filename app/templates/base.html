@@ -5,7 +5,9 @@
     <title>Your Favorite Quotes</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    {% if not is_single %}
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    {% endif %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}"/>
 
     <script
@@ -21,6 +23,8 @@
     </div>
     <p class="api-hint has-text-white is-size-7 is-pulled-right">Want to customize it? Check out the <a href="{{ url_for('list_notes_api') }}" class="has-text-white has-text-weight-bold">JSON API</a></p>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    {% if not is_single %}
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    {% endif %}
 </body>
 </html>
