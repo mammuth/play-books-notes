@@ -27,10 +27,27 @@ OAUTH_SCOPES = [
 ]
 
 
-
 @app.route('/')
 def index():
     return redirect(url_for('list_notes'))
+
+
+@app.route('/update')
+def update():
+    notes.update_notes()
+    return redirect(url_for('list_notes'))
+
+
+@app.route('/random-note')
+def random_note():
+    if 'credentials' not in flask.session:
+        return flask.redirect('authorize')
+
+    context = {
+        'notes': notes.get_random_note(),
+        'is_single': True
+    }
+    return render_template('notes.html', **context)
 
 
 # ToDo

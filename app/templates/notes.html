@@ -12,6 +12,7 @@
         </div>
     </section>
 
+    {% if not is_single %}
     <script>
         $(document).ready(function () {
             {# Dom randomize function #}
@@ -42,4 +43,5 @@
                 });
         });
     </script>
+    {% endif %}
 {% endblock %}

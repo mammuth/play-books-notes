@@ -1,10 +1,12 @@
 # ToDo
 # - Multiuser setup (use session key or something auth-related as new roots in NOTE_STORE. Grab that in get_notes()
-
+import random
 from typing import List
 
 import flask
 import io
+
+import os
 from bs4 import BeautifulSoup
 
 import google.oauth2.credentials
@@ -50,8 +52,14 @@ def update_notes():
         q=f"'{notes_folder_id}' in parents"
     ).execute()
 
-    # for note in notes.get('files'):
-    for note in notes.get('files'):
+    files_to_download = notes.get('files')
+
+    # only download 2 books when developing
+    from app import app
+    if os.environ.get('FLASK_DEBUG'):
+        files_to_download = files_to_download[:2]
+
+    for note in files_to_download:
         note_id = note.get('id')
         book_name = note.get('name')
         book_name = book_name.replace('Notes from "', '').replace('Notizen aus "', '')[:-1]
@@ -70,13 +78,14 @@ def update_notes():
         raw_html = fh.getvalue().decode("utf-8")
         final_notes = extract_notes_from_html(raw_html)
 
-        # Add to note store
-        NOTE_STORE[note_id] = {
-            'id': note_id,
-            'book_name': book_name,
-            'notes': final_notes,
-            'note_count': len(final_notes),
-        }
+        # Add to note store if the book has notes
+        if len(final_notes):
+            NOTE_STORE[note_id] = {
+                'id': note_id,
+                'book_name': book_name,
+                'notes': final_notes,
+                'note_count': len(final_notes),
+            }
 
 
 def get_notes(user=None):
@@ -84,3 +93,14 @@ def get_notes(user=None):
         return NOTE_STORE
     update_notes()
     return NOTE_STORE
+
+
+def get_random_note(user=None):
+    if not NOTE_STORE:
+        update_notes()
+
+    quote_tuples = [(str(note), book) for book in NOTE_STORE.values() for note in book['notes']]
+    note, book = random.choice(quote_tuples)
+    # replace book notes with the single note we randomly chose
+    book['notes'] = [note]
+    return {book['id']: book}

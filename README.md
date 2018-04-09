@@ -1,7 +1,7 @@
 # Play Books Notes
 API &amp; Frontend for getting your annotations and quotes from the Google Play Books App.
 
-The app exposes a JSON API for building arbitrary frontends / clients. To be fancy, it also implements a very simple frontend, a web page which displays all your quotes in a slider as seen in the screenshot.
+The app exposes a JSON API for building arbitrary frontends / clients with the exported notes. To be fancy, it also implements a very simple frontend, a web page which displays all your quotes in a slider as seen in the screenshot.
 
 ## What is this useful for?
 Background info: When using the [Google Play Books app](https://play.google.com/store/apps/details?id=com.google.android.apps.books&hl=en) for reading ebooks, you can annotate sentences. Those annotations and quotes get stored in your Google Drive in an Google Doc which is automatically updated.
@@ -24,3 +24,8 @@ Could be used for:
 - Modify `docker-compose.prod.yml` according to your needs
 - Run `docker-compose -f docker-compose.prod.yml up`
 - Think about adding a reverse proxy or use something like Traefik
+
+## Available endpoints
+- `/notes`
+- `/notes-api`
+- `/random-note`
