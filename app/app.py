@@ -12,9 +12,11 @@ from flask import render_template, redirect, url_for
 
 import notes
 
-
 app = flask.Flask(__name__)
 app.secret_key = 'REPLACE ME - this value is here as a placeholder.'  # ToDo secret key
+
+if os.environ.get('SERVER_NAME'):
+    app.config['SERVER_NAME'] = os.environ.get('SERVER_NAME')
 
 ROOT_PATH = os.path.join(app.root_path, '')
 
