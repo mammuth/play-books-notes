@@ -11,8 +11,9 @@ import google.oauth2.credentials
 import googleapiclient.discovery
 from googleapiclient.http import MediaIoBaseDownload
 
-from app import API_SERVICE_NAME, API_VERSION
 
+API_SERVICE_NAME = 'drive'
+API_VERSION = 'v3'
 
 NOTE_STORE = {}
 

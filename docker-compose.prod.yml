@@ -1,0 +1,8 @@
+version: '2'
+services:
+  web:
+    build: ./
+    ports:
+      - "8197:80"
+    environment:
+      - OAUTHLIB_INSECURE_TRANSPORT=1
