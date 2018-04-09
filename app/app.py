@@ -58,7 +58,6 @@ def list_notes():
     if 'credentials' not in flask.session:
         return flask.redirect('authorize')
     try:
-
         context = {
             'notes': notes.get_notes(),
         }
