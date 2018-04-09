@@ -24,7 +24,7 @@ You need to create a Google Cloud Project and configure an OAuth Client. Downlao
 
 ### Deployment
 - Modify `docker-compose.prod.yml` according to your needs
-- Run `docker-compose -d -f docker-compose.prod.yml up`
+- Run `docker-compose -f docker-compose.prod.yml up -d`
 - Think about adding a reverse proxy or use something like Traefik
 
 ## Available endpoints
