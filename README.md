@@ -16,13 +16,15 @@ Could be used for:
 
 ## Usage
 
+You need to create a Google Cloud Project and configure an OAuth Client. Downlaod the corresnponding `client_id.json` and `client_secret.json` and place them in the `app/` directory.
+
 ### Development
 - Run `docker-compose up`
 - App will be exposed on localhost:8080
 
 ### Deployment
 - Modify `docker-compose.prod.yml` according to your needs
-- Run `docker-compose -f docker-compose.prod.yml up`
+- Run `docker-compose -d -f docker-compose.prod.yml up`
 - Think about adding a reverse proxy or use something like Traefik
 
 ## Available endpoints
