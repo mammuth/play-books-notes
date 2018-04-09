@@ -57,11 +57,15 @@ def random_note():
 def list_notes():
     if 'credentials' not in flask.session:
         return flask.redirect('authorize')
+    try:
 
-    context = {
-        'notes': notes.get_notes(),
-    }
-    return render_template('notes.html', **context)
+        context = {
+            'notes': notes.get_notes(),
+        }
+        return render_template('notes.html', **context)
+    except UnboundLocalError:
+        error = "No 'Play Books Notes' folder found on your Google Drive, please check if 'Play Books' app is synced to Drive"
+        return render_template('error.html', error=error)
 
 
 # ToDo
