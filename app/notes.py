@@ -99,7 +99,7 @@ def get_random_note(user=None):
     if not NOTE_STORE:
         update_notes()
 
-    quote_tuples = [(str(note), book) for book in NOTE_STORE.values() for note in book['notes']]
+    quote_tuples = [(str(note), book.copy()) for book in NOTE_STORE.values() for note in book['notes']]
     note, book = random.choice(quote_tuples)
     # replace book notes with the single note we randomly chose
     book['notes'] = [note]
