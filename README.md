@@ -11,6 +11,7 @@ Could be used for:
 - Chromecast Backdrop
 - "Quote Of The Day" widget on your phone
 - Amazon Alexa Skill
+- Export your notes for backup purposes
 
 <img width="1680" alt="screen shot 2018-04-08 at 22 11 52" src="https://user-images.githubusercontent.com/3121306/38472156-d7cda50a-3b7b-11e8-9ca0-541296755118.png">
 
