@@ -1,5 +1,5 @@
 # Play Books Notes
-API &amp; Frontend for getting your annotations and quotes from the Google Play Books App.
+API &amp; Frontend for exporting your annotations and quotes from the Google Play Books App.
 
 The app exposes a JSON API for building arbitrary frontends / clients with the exported notes. To be fancy, it also implements a very simple frontend, a web page which displays all your quotes in a slider as seen in the screenshot.
 
