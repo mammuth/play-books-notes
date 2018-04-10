@@ -32,3 +32,5 @@ You need to create a Google Cloud Project and configure an OAuth Client. Downlao
 - `/notes`
 - `/notes-api`
 - `/random-note`
+- `/update`
+
