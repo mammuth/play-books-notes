@@ -9,11 +9,13 @@
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
     {% endif %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}"/>
-
-    <script
-          src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-          integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-          crossorigin="anonymous"></script>
+    
+    {% if not is_single %}
+        <script
+              src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+              integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+              crossorigin="anonymous"></script>
+    {% endif %}
 
 </head>
 <body>
