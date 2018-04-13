@@ -11,6 +11,7 @@ import google_auth_oauthlib.flow
 from flask import render_template, redirect, url_for
 
 import notes
+from exceptions import PlayBooksFolderNotFound
 
 app = flask.Flask(__name__)
 app.secret_key = 'REPLACE ME - this value is here as a placeholder.'  # ToDo secret key
@@ -58,9 +59,19 @@ def list_notes():
     if 'credentials' not in flask.session:
         return flask.redirect('authorize')
 
-    context = {
-        'notes': notes.get_notes(),
-    }
+    context = {}
+    fetched_notes = {}
+    try:
+        fetched_notes = notes.get_notes()
+    except PlayBooksFolderNotFound as e:
+        context['messages'] = [
+            {
+                'type': 'danger',
+                'message': 'Can not find folder "Play Books Notes" in your Google Drive. Are you syncing your notes '
+                           'with Drive?'
+            }
+        ]
+    context['notes'] = fetched_notes
     return render_template('notes.html', **context)
 
 
