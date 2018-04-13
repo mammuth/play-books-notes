@@ -1,5 +1,5 @@
 # Play Books Notes
-API &amp; Frontend for getting your annotations and quotes from the Google Play Books App.
+API &amp; Frontend for exporting your annotations and quotes from the Google Play Books App.
 
 The app exposes a JSON API for building arbitrary frontends / clients with the exported notes. To be fancy, it also implements a very simple frontend, a web page which displays all your quotes in a slider as seen in the screenshot.
 
@@ -11,6 +11,7 @@ Could be used for:
 - Chromecast Backdrop
 - "Quote Of The Day" widget on your phone
 - Amazon Alexa Skill
+- Export your notes for backup purposes
 
 <img width="1680" alt="screen shot 2018-04-08 at 22 11 52" src="https://user-images.githubusercontent.com/3121306/38472156-d7cda50a-3b7b-11e8-9ca0-541296755118.png">
 
@@ -31,3 +32,5 @@ You need to create a Google Cloud Project and configure an OAuth Client. Downlao
 - `/notes`
 - `/notes-api`
 - `/random-note`
+- `/update`
+
