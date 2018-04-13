@@ -5,7 +5,7 @@
         <h1 class="title has-text-white is-size-1">Your Favorite Quotes</h1>
         <div class="notes-slider js-notes-slider">
             {% for book in notes.values() %}
-                {% for note in book['notes'] %}
+                {% for quote, chapter in book['notes'].items() %}
                     {% include 'note.html' %}
                 {% endfor %}
             {% endfor %}
