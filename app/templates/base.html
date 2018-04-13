@@ -18,6 +18,12 @@
 </head>
 <body>
     <div class="container">
+        {% for message in messages %}
+            <div class="notification is-{{ message.type }}">
+                {{ message.message }}
+            </div>
+        {% endfor %}
+
         {% block content %}
         {% endblock %}
     </div>

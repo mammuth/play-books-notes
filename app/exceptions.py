@@ -1,0 +1,2 @@
+class PlayBooksFolderNotFound(Exception):
+    pass

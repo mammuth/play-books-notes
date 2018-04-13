@@ -13,6 +13,7 @@ import google.oauth2.credentials
 import googleapiclient.discovery
 from googleapiclient.http import MediaIoBaseDownload
 
+from exceptions import PlayBooksFolderNotFound
 
 API_SERVICE_NAME = 'drive'
 API_VERSION = 'v3'
@@ -42,10 +43,10 @@ def update_notes():
         q="name='Play Books Notes'"
     ).execute()
 
-    if notes_folder_search:
-        files = notes_folder_search.get('files')
-        if len(files) > 0:
-            notes_folder_id = files[0].get('id')
+    files = notes_folder_search.get('files')
+    if len(files) < 1:
+        raise PlayBooksFolderNotFound()
+    notes_folder_id = files[0].get('id')
 
     # Get Notes IDs
     notes = drive_service.files().list(
