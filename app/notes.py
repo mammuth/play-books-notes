@@ -24,11 +24,12 @@ def update_notes():
     def extract_notes_from_html(html: str) -> List[str]:
         soup = BeautifulSoup(html, 'html.parser')
         note_tables = soup.select('table table')
-        quotes = []
+        quotes = {}
         for note in note_tables:
             quote_element = note.select('td:nth-of-type(2) span')[0]
-            text = quote_element.contents[0]
-            quotes.append(text)
+            quote_text = quote_element.contents[0]
+            quote_chapter = quote_element.find_previous('h2').contents[0].contents[0]
+            quotes[quote_text] = quote_chapter
         return quotes
 
     credentials = google.oauth2.credentials.Credentials(
@@ -99,8 +100,9 @@ def get_random_note(user=None):
     if not NOTE_STORE:
         update_notes()
 
-    quote_tuples = [(str(note), book.copy()) for book in NOTE_STORE.values() for note in book['notes']]
+    quote_tuples = [({quote:chapter}, book.copy()) for book in NOTE_STORE.values() for quote, chapter in
+                    book['notes'].items()]
     note, book = random.choice(quote_tuples)
     # replace book notes with the single note we randomly chose
-    book['notes'] = [note]
+    book['notes'] = note
     return {book['id']: book}
