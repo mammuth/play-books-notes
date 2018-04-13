@@ -47,7 +47,6 @@ def random_note():
         'notes': notes.get_random_note(),
         'is_single': True
     }
-    print(context)
     return render_template('notes.html', **context)
 
 
@@ -62,7 +61,6 @@ def list_notes():
     context = {
         'notes': notes.get_notes(),
     }
-    print(context)
     return render_template('notes.html', **context)
 
 
