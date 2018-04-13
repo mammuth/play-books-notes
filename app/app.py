@@ -64,7 +64,6 @@ def list_notes():
     return render_template('notes.html', **context)
 
 
-
 # ToDo
 # - Don't only parse and store quote text, but also chapter title and page number
 @app.route('/notes-api')
