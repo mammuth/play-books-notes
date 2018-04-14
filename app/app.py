@@ -8,12 +8,15 @@ import requests
 import google.oauth2.credentials
 import google_auth_oauthlib.flow
 
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, request, url_for
+from flask_cache import Cache
 
 import notes
 
 app = flask.Flask(__name__)
 app.secret_key = 'REPLACE ME - this value is here as a placeholder.'  # ToDo secret key
+
+cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
 if os.environ.get('SERVER_NAME'):
     app.config['SERVER_NAME'] = os.environ.get('SERVER_NAME')
@@ -26,6 +29,8 @@ OAUTH_SCOPES = [
     'https://www.googleapis.com/auth/drive.readonly',
 ]
 
+def is_cache():
+    return True if request.query_string.decode('utf-8') == 'cache=False' else False
 
 @app.route('/')
 def index():
@@ -39,6 +44,7 @@ def update():
 
 
 @app.route('/random-note')
+@cache.cached(unless=is_cache)
 def random_note():
     if 'credentials' not in flask.session:
         return flask.redirect('authorize')
@@ -54,10 +60,10 @@ def random_note():
 # - Use same view but behave according to accepted content-type header
 # - Display total number of quotes
 @app.route('/notes')
+@cache.cached(unless=is_cache)
 def list_notes():
     if 'credentials' not in flask.session:
         return flask.redirect('authorize')
-
     context = {
         'notes': notes.get_notes(),
     }
@@ -67,6 +73,7 @@ def list_notes():
 # ToDo
 # - Don't only parse and store quote text, but also chapter title and page number
 @app.route('/notes-api')
+@cache.cached(unless=is_cache)
 def list_notes_api():
     if 'credentials' not in flask.session:
         return flask.redirect('authorize')
