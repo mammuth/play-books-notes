@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 
 import google.oauth2.credentials
 import googleapiclient.discovery
+from flask import logging
 from googleapiclient.http import MediaIoBaseDownload
 
 from exceptions import PlayBooksFolderNotFound
@@ -19,7 +20,6 @@ API_SERVICE_NAME = 'drive'
 API_VERSION = 'v3'
 
 NOTE_STORE = {}
-
 
 def update_notes():
     global NOTE_STORE
@@ -31,6 +31,7 @@ def update_notes():
         for note in note_tables:
             quote_element = note.select('td:nth-of-type(2) span')[0]
             quote = quote_element.contents[0]
+            print('Quote: ' + quote[:10])
             chapter = quote_element.find_previous('h2').contents[0].contents[0]
             element_dict['quote'] = quote
             element_dict['chapter'] = chapter
