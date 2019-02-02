@@ -27,8 +27,8 @@ def update_notes():
         soup = BeautifulSoup(html, 'html.parser')
         note_tables = soup.select('table table')
         quotes = []
-        element_dict = {}
         for note in note_tables:
+            element_dict = {}
             quote_element = note.select('td:nth-of-type(2) span')[0]
             quote = quote_element.contents[0]
             print('Quote: ' + quote[:10])
