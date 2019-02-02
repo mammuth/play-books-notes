@@ -22,6 +22,7 @@ NOTE_STORE = {}
 
 
 def update_notes():
+    global NOTE_STORE
     def extract_notes_from_html(html: str) -> List[str]:
         soup = BeautifulSoup(html, 'html.parser')
         note_tables = soup.select('table table')
