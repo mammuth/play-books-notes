@@ -31,7 +31,6 @@ def update_notes():
             element_dict = {}
             quote_element = note.select('td:nth-of-type(2) span')[0]
             quote = quote_element.contents[0]
-            print('Quote: ' + quote[:10])
             chapter = quote_element.find_previous('h2').contents[0].contents[0]
             element_dict['quote'] = quote
             element_dict['chapter'] = chapter
