@@ -64,7 +64,7 @@ def update_notes():
     # only download 2 books when developing
     from app import app
     if os.environ.get('FLASK_DEBUG'):
-        files_to_download = files_to_download[:3]
+        files_to_download = files_to_download[:5]
 
     for note in files_to_download:
         note_id = note.get('id')
