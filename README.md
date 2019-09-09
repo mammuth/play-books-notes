@@ -1,4 +1,7 @@
 # Play Books Notes
+
+<a href="https://www.buymeacoffee.com/mammuth" target="_blank"><img src="https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+
 API &amp; Frontend for exporting your annotations and quotes from the Google Play Books App.
 
 The app exposes a JSON API for building arbitrary frontends / clients with the exported notes. To be fancy, it also implements a very simple frontend, a web page which displays all your quotes in a slider as seen in the screenshot.
